@@ -1,0 +1,17 @@
+package index
+
+import (
+    "statberry/views/layouts"
+)
+
+
+templ Index() {
+    @layouts.Base() {
+    <div class="bg-base-100 flex justify-center items-center h-screen flex-col">
+        <div class="card bg-neutral w-96 shadow-xl">
+            <div class="card-body" hx-get="/data" hx-trigger="load, every 60s">
+            </div>
+        </div>
+    </div>
+    }
+}
