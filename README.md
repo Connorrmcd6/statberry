@@ -1,6 +1,4 @@
-# Statberry
-
-# Statberry
+# Statberry - The Raspberry Pi Health Monitor
 
 Statberry is a simple web server written in Golang that displays usage statistics related to the host machine (specifically designed for Raspberry Pi). The server fetches data every 60 seconds but this can be changed in the `hx-trigger` in the `index.templ` file if needed. The UI is built with [HTMX](https://htmx.org/) and [DaisyUI](https://daisyui.com/).
 
