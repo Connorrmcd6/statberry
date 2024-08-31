@@ -1,8 +1,10 @@
 # Statberry
 
-Statberry is a simple web server written in Golang that displays various statistics related to the host machine (specifically designed for Raspberry Pi). The server fetches new data on load and then every 60 seconds after that. The data is displayed on a basic dashboard built with [HTMX](https://htmx.org/), [Templ](https://templ.guide/), [DaisyUI](https://daisyui.com/) and [Tailwindcss](https://tailwindcss.com/) - See below for reference.
+# Statberry
 
-![Statberry](public/assets/statberry.png)
+Statberry is a simple web server written in Golang that displays usage statistics related to the host machine (specifically designed for Raspberry Pi). The server fetches data every 60 seconds but this can be changed in the `hx-trigger` in the `index.templ` file if needed. The UI is built with [HTMX](https://htmx.org/) and [DaisyUI](https://daisyui.com/).
+
+![Statberry](./public/assets/statberry.png)
 
 ## Requirements
 
@@ -12,10 +14,7 @@ Statberry is a simple web server written in Golang that displays various statist
 
 ## Installation
 
-The entire app compiles to a single 8mb executable called `app` found in the `./bin` folder which can be run on any machine. To create this binary follow these steps:
-
 1. **Clone the repository**:
-   note: this can be cloned to your local machine as we only need the executable for the Raspberry Pi. However, if you would like clone it to your Pi that is also fine although it may be harder to work with if you need to install and dependencies.
 
    ```sh
    git clone https://github.com/connorrmcd6/statberry.git
@@ -24,24 +23,83 @@ The entire app compiles to a single 8mb executable called `app` found in the `./
 
 2. **Build the project**:
 
+   To build the executable file, there are three options listed in the `Makefile`. Use `make build-linux` for Raspberry Pi.
+
    ```sh
    make build
+   make build-linux
+   make build-windows
    ```
 
-3. **Run the executable**:
+3. **Hot Reloading**:
+
+   The repository has been configured for hot reloading with [Air](https://github.com/air-verse/air) if you want to experiment with UI changes.
+
+   Run these commands in separate terminals for hot reloading:
+
    ```sh
-   ./bin/app
+   air
+   make templ
+   make css
    ```
 
-## Load exe file onto Raspberry Pi
+## Transfer app executable to Raspberry Pi (make sure it is the Linux version)
 
-## Usage
+There are numerous ways to do this, such as:
 
-Once the server is running, you can access it by navigating to `http://<your-raspberry-pi-ip>:4000` in your web browser. The server will display the system statistics in a simple web interface.
+- `scp` (Secure Copy)
+- `rsync`
+- `sftp` (Secure File Transfer Protocol)
+- Filezilla
 
-## Configuration
+For detailed usage examples, refer to the original markdown content.
 
-If you need to customize the server, you can modify the source code in `index.go` and rebuild the project.
+## Configuring Webserver with Nginx
+
+Refer to the provided YouTube video for Nginx installation and setup.
+
+Add the following configuration to `/etc/nginx/sites-available/{file_name}` and fill out the relevant values for `file_name` and `pi_public_ip_address`.
+
+```sh
+server {
+   listen 80;
+   listen [::]:80;
+
+   root /var/www/file_name;
+   index index.html;
+}
+
+server {
+   listen 80;
+   server_name pi_public_ip;
+
+   location / {
+      proxy_pass http://localhost:4000;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+   }
+}
+```
+
+To get the public IP of the Raspberry Pi, type `ifconfig` in the terminal. Use the inet address of the `eth0:` section if using a LAN and use the `wlan0:` section if using Wi-Fi.
+
+### Terminal Screen
+
+I use terminal screens to run my executable.
+
+To start a new screen, run this command:
+
+```sh
+screen -S app_name
+```
+
+Navigate to the location where the `.exe` is stored and run:
+
+```sh
+./app
+```
 
 ## Contributing
 
