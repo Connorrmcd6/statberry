@@ -52,7 +52,7 @@ There are numerous ways to do this, such as:
 
 ## Configuring Webserver with Nginx
 
-Tech With Tim has a greate [YouTube video](https://youtu.be/KFwFDZpEzXY?si=w7iPyi5AUkMA4r3u) on this.
+Tech With Tim has a great [YouTube video](https://youtu.be/KFwFDZpEzXY?si=w7iPyi5AUkMA4r3u) on this.
 
 Add the following configuration to `/etc/nginx/sites-available/{file_name}` and fill out the relevant values for `file_name` and `pi_public_ip_address`.
 
