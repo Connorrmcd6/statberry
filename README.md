@@ -21,7 +21,7 @@ Statberry is a simple web server written in Golang that displays usage statistic
 
 2. **Build the project**:
 
-   To build the executable file, there are three options listed in the `Makefile`. Use `make build` for Raspberry Pi (64 bit) and make-build-local if you would like to build the the binary with your local machines architecture.
+   To build the executable file, there are three options listed in the `Makefile`. Use `make build` for Raspberry Pi (64 bit) and `make-build-local` if you would like to build the the binary with your local machines architecture.
 
    \*note: you may need to update the `getCPUTemperature()` function if you are running on anything but Raspberry Pi as it wont be able to find the `/sys/class/thermal/thermal_zone0/temp` file.
 
