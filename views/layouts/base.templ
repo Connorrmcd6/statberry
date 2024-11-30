@@ -1,19 +1,17 @@
 package layouts
 
-
 templ Base() {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
 			<title>Statberry</title>
-			<link rel="icon" type="image/x-icon" href="/public/favicon.ico"/>
+			<link rel="icon" type="image/x-icon" href="/public/assets/statberry-logo.png"/>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<link rel="stylesheet" href="./public/styles.css"/>
 			<script src="https://unpkg.com/htmx.org@1.9.9" defer></script>
-			
 		</head>
-		<body class="antialiased" >
+		<body class="antialiased">
 			{ children... }
 		</body>
 	</html>
