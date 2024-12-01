@@ -5,7 +5,7 @@ build-local:
 	@go build -o bin/app .
 
 build:
-	@GOOS=linux GOARCH=amd64 go build -o bin/app .
+	@GOOS=linux GOARCH=arm64 go build -o bin/app .
 
 css:
 	tailwindcss build views/css/app.css -o public/styles.css --watch   

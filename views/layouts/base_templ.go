@@ -29,7 +29,7 @@ func Base() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><title>Statberry</title><link rel=\"icon\" type=\"image/x-icon\" href=\"/public/assets/statberry-logo.png\"><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"./public/styles.css\"><script src=\"https://unpkg.com/htmx.org@1.9.9\" defer></script></head><body class=\"antialiased\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><title>Statberry</title><link rel=\"icon\" type=\"image/x-icon\" href=\"/public/assets/statberry-logo.png\"><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"manifest\" href=\"/manifest.json\"><link rel=\"stylesheet\" href=\"./public/styles.css\"><script src=\"https://unpkg.com/htmx.org@1.9.9\" defer></script></head><body class=\"antialiased\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

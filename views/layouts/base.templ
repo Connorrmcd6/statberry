@@ -8,11 +8,25 @@ templ Base() {
 			<link rel="icon" type="image/x-icon" href="/public/assets/statberry-logo.png"/>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="manifest" href="/manifest.json"/>
 			<link rel="stylesheet" href="./public/styles.css"/>
 			<script src="https://unpkg.com/htmx.org@1.9.9" defer></script>
 		</head>
 		<body class="antialiased">
 			{ children... }
+			<script>
+				if ('serviceWorker' in navigator) {
+					window.addEventListener('load', () => {
+					navigator.serviceWorker.register('/service-worker.js')
+						.then(registration => {
+						console.log('ServiceWorker registration successful:', registration.scope);
+						})
+						.catch(error => {
+						console.error('ServiceWorker registration failed:', error);
+						});
+					});
+				}
+				</script>
 		</body>
 	</html>
 }
